@@ -26,9 +26,9 @@ module Abra
       def self.aapt
         aapt_path = File.dirname(__FILE__) + "/tool"
         if RUBY_PLATFORM =~ /win32/
+          aapt_path = "#{aapt_path}/windows/aapt.exe"
         elsif RUBY_PLATFORM =~ /linux/
-          bits = i.size * 8
-          aapt_path = "#{aapt_path}/linux/#{bits}/aapt"
+          aapt_path = "#{aapt_path}/linux/aapt"
         elsif RUBY_PLATFORM =~ /darwin/
           aapt_path = "#{aapt_path}/macos/aapt"
         else
