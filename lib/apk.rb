@@ -24,8 +24,9 @@ module Abra
       if self.icon
         dst = "/tmp/abra-#{Time.now.to_i.to_s}-#{Process.pid.to_s}-#{("%04d" % rand(9999))}"
         @resource.extract(self.icon, dst)
-        File.read(dst)
+        data = File.read(dst)
         File.delete(dst)
+        data
       else
         nil
       end
