@@ -37,6 +37,14 @@ puts "[+]  SDK Version: %s." % apk.sdk_version
 puts "[+]  API Level: %s." % apk.api_level
 ```
 
+Extract icon file
+
+```ruby
+require 'apk'
+apk = Abra::APK.new(apk_path)
+apk.icon_file
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

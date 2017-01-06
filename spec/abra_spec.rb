@@ -12,6 +12,8 @@ describe Abra do
   it "parse one apk" do
     apk_path = File.expand_path(File.dirname(__FILE__) + '/data/ieterm.apk')
     apk = Abra::APK.new(apk_path)
+    icon_file = apk.icon_file
+    expect(icon_file).not_to eq(nil)
     expect(apk.package).to eq('com.icefireym.ieterm')
     expect(apk.version_name).to eq('1.0')
     expect(apk.version_code).to eq(1)

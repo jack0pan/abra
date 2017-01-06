@@ -1,5 +1,7 @@
 require "abra/version"
 require 'aapt'
+require 'resource'
+
 
 module Abra
   class APK
@@ -15,6 +17,18 @@ module Abra
       @label = attrs[:label]
       @icon = attrs[:icon]
       @api_level = attrs[:api_level].to_i
+      @resource = Resource.new(@apk)
+    end
+
+    def icon_file
+      if self.icon
+        dst = "/tmp/abra-#{Time.now.to_i.to_s}-#{Process.pid.to_s}-#{("%04d" % rand(9999))}"
+        @resource.extract(self.icon, dst)
+        File.read(dst)
+        File.delete(dst)
+      else
+        nil
+      end
     end
 
     def sdk_version
